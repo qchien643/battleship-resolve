@@ -346,7 +346,6 @@ const BattleshipGame: React.FC = () => {
         ship.hits += 1;
         if (ship.hits === ship.length) {
           ship.isSunk = true;
-          isSunk = true;
           
           // Create a SunkShip object
           sunkShip = {
@@ -548,7 +547,6 @@ const BattleshipGame: React.FC = () => {
     switch (gamePhase) {
       case 'setup':
         return <GameSetup 
-          devModeEnabled={true}
           onStartGame={handleGameStart}
         />;
         

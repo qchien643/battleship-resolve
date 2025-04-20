@@ -7,7 +7,6 @@ interface GameSetupProps {
     developerMode: boolean;
     difficulty: 'normal' | 'hard' | 'optimized';
   }) => void;
-  devModeEnabled?: boolean;
 }
 
 const DEFAULT_SHIP_CONFIGS = [
@@ -18,8 +17,7 @@ const DEFAULT_SHIP_CONFIGS = [
 ];
 
 const GameSetup: React.FC<GameSetupProps> = ({ 
-  onStartGame, 
-  devModeEnabled = false 
+  onStartGame 
 }) => {
   const [rows, setRows] = useState<number>(10);
   const [cols, setCols] = useState<number>(10);

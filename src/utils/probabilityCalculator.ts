@@ -45,8 +45,8 @@ export enum ProbabilityMode {
 // Direction vectors for adjacent cells (up, right, down, left)
 const ADJACENT_DIRECTIONS = [[-1, 0], [0, 1], [1, 0], [0, -1]];
 
-// Direction names for easier reference
-const DIRECTION_NAMES = ['up', 'right', 'down', 'left'];
+// Direction names for easier reference - removing as unused
+// const DIRECTION_NAMES = ['up', 'right', 'down', 'left'];
 
 // Factor to increase probability for cells adjacent to hits
 const ADJACENCY_FACTOR = 3.0;
@@ -120,8 +120,7 @@ export function calculateProbabilityMap(
       boardWidth,
       shipLength,
       hits,
-      misses,
-      sunkShips // Pass sunk ships for analysis but not for exclusion
+      misses
     );
 
     totalPlacements += validPlacements.length;
@@ -208,10 +207,10 @@ function normalizeMap(
   let validCells = 0;
   
   // Calculate the sum of all probabilities
-  for (let row = 0; row < boardHeight; row++) {
-    for (let col = 0; col < boardWidth; col++) {
-      if (probabilityMap[row][col] > 0) {
-        sum += probabilityMap[row][col];
+  for (let r = 0; r < boardHeight; r++) {
+    for (let c = 0; c < boardWidth; c++) {
+      if (probabilityMap[r][c] > 0) {
+        sum += probabilityMap[r][c];
         validCells++;
       }
     }
@@ -223,10 +222,10 @@ function normalizeMap(
   }
   
   // Normalize all probabilities
-  for (let row = 0; row < boardHeight; row++) {
-    for (let col = 0; col < boardWidth; col++) {
-      if (probabilityMap[row][col] > 0) {
-        probabilityMap[row][col] /= sum;
+  for (let r = 0; r < boardHeight; r++) {
+    for (let c = 0; c < boardWidth; c++) {
+      if (probabilityMap[r][c] > 0) {
+        probabilityMap[r][c] /= sum;
       }
     }
   }
@@ -749,7 +748,6 @@ function getAdjacentCells(
  * @param shipLength - Length of the ship
  * @param hits - Coordinates of cells that have been hit
  * @param misses - Coordinates of cells that have been missed
- * @param sunkShips - Array of ships that have been sunk
  * @returns Array of valid ship placements (each placement is an array of coordinates)
  */
 function generateValidPlacements(
@@ -757,8 +755,7 @@ function generateValidPlacements(
   boardWidth: number,
   shipLength: number,
   hits: Coordinate[],
-  misses: Coordinate[],
-  sunkShips: SunkShip[] = [] // Kept for potential future use, but not for exclusion
+  misses: Coordinate[]
 ): Coordinate[][] {
   const validPlacements: Coordinate[][] = [];
 
@@ -1013,9 +1010,6 @@ function applyOptimalInitialPattern(
   boardWidth: number,
   remainingShips: number[]
 ): void {
-  // Calculate maximum ship size
-  const maxShipSize = Math.max(...remainingShips);
-  
   // For a 10x10 board with standard ships, a pattern with evenly spaced shots is optimal
   // The optimal spacing is related to the size of the smallest ship (usually 2)
   const smallestShip = Math.min(...remainingShips);

@@ -26,7 +26,6 @@ interface GameBoardProps {
   onCellClick: (row: number, col: number) => void;
   placementPhase?: boolean;
   selectedShipIndex?: number;
-  selectedShipOrientation?: 'horizontal' | 'vertical';
   validatePlacement?: (row: number, col: number) => boolean;
   highlightBestMove?: boolean;
 }
@@ -42,7 +41,6 @@ const GameBoard: React.FC<GameBoardProps> = ({
   onCellClick,
   placementPhase = false,
   selectedShipIndex,
-  selectedShipOrientation,
   validatePlacement,
   highlightBestMove = false,
 }) => {
@@ -100,16 +98,6 @@ const GameBoard: React.FC<GameBoardProps> = ({
     const b = Math.floor(255 * (1 - probability));
     
     return `rgba(${r}, ${g}, ${b}, 0.6)`;
-  };
-
-  // Get cell content (text or probability)
-  const getCellContent = (cell: Cell): React.ReactNode => {
-    if (showProbabilities && cell.probability !== undefined && cell.state !== 'hit' && cell.state !== 'miss' && cell.state !== 'sunk') {
-      // Show probability as percentage
-      const percent = Math.round(cell.probability * 100);
-      return <span className="probability">{percent}%</span>;
-    }
-    return null;
   };
 
   // Find the cell with the highest probability for best move highlighting
