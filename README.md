@@ -14,6 +14,10 @@ An advanced AI probability calculator for the classic Battleship game that predi
 - **Developer Mode**: For testing the algorithm against randomly placed ships
 - **Manual Mode**: For use in real games where you provide hit/miss feedback
 
+## Live Demo
+
+Check out the live demo: [Battleship Predictor](https://qchien643.github.io/battleship-resolve/)
+
 ## How It Works
 
 The predictor uses several advanced algorithms to calculate probabilities:
@@ -41,6 +45,17 @@ npm run dev
 ```
 
 Visit `http://localhost:5173` (or the port specified in the console) to use the application.
+
+## Deployment
+
+```bash
+# Deploy to GitHub Pages
+npm run deploy
+```
+
+The site will be deployed to https://qchien643.github.io/battleship-resolve/
+
+Alternatively, the site is automatically deployed via GitHub Actions when changes are pushed to the main branch.
 
 ## Usage
 

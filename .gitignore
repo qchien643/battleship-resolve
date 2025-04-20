@@ -35,4 +35,6 @@ dist-ssr
 # Build files
 /build
 .cache 
-memory-bank
+
+# Private project notes
+memory-bank/
