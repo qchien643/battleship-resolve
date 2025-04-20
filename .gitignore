@@ -24,6 +24,7 @@ dist-ssr
 *.sln
 *.sw?
 
+
 # Environment
 .env
 .env.local
@@ -34,3 +35,4 @@ dist-ssr
 # Build files
 /build
 .cache 
+memory-bank
