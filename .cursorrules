@@ -1,0 +1,50 @@
+# AI Battleship Project Rules
+
+## Project Intelligence
+
+### Project Structure
+- The project follows a standard React/TypeScript structure
+- Component-based architecture with clear separation of concerns
+- Game logic is separated from UI components
+- Board state uses a 2D array representation
+
+### Code Style
+- Use TypeScript for all new files
+- Prefer functional components with hooks over class components
+- Use descriptive variable and function names
+- Include JSDoc comments for functions and complex logic
+- Separate game logic from rendering components
+
+### State Management
+- Use React Context API for global state management
+- Maintain clear state update patterns
+- Keep state normalized when possible
+- Use reducers for complex state transitions
+
+### Game Implementation
+- Board is represented as a 10x10 grid
+- Ships have fixed sizes: Carrier (5), Battleship (4), Cruiser (3), Submarine (3), Destroyer (2)
+- Ships cannot overlap and must be placed within the board boundaries
+- Game follows traditional Battleship rules
+- AI strategies should be modular and pluggable
+
+### User Experience
+- Provide clear feedback for all game actions
+- Use accessible design patterns
+- Ensure responsive layout works on various screen sizes
+- Maintain a naval/military visual theme
+
+## Working Patterns
+- Document major implementation decisions
+- Update memory bank files when significant changes are made
+- Test game logic with unit tests
+- Keep UI components reusable and composable
+
+## Technical Decisions
+- React for UI components
+- TypeScript for type safety
+- Jest for testing
+- CSS/SCSS for styling
+- Vite for build tooling
+
+This file will be updated as the project evolves and new patterns emerge. 
